@@ -6,6 +6,9 @@ namespace GenshinMovement
 {
     public class PlayerMovementStateMachine : StateMachine//cache states
     {
+
+        public Player Player { get; }
+
         public PlayerIdlingState IdlingState { get; }//get; so it's only settable from constructor and read only everywhere else, if private, it can be set anywhere in this class
 
         public PlayerWalkingState WalkingState { get; }
@@ -14,12 +17,18 @@ namespace GenshinMovement
 
         public PlayerSprintingState SprintingState { get; }
 
-        public PlayerMovementStateMachine()//instantiate
+        public PlayerMovementStateMachine(Player player)//instantiate
         {
-            IdlingState = new PlayerIdlingState();
-            WalkingState = new PlayerWalkingState();
-            RunningState = new PlayerRunningState();
-            SprintingState = new PlayerSprintingState();
+            Player = player;
+
+            IdlingState = new PlayerIdlingState(this);
+
+            WalkingState = new PlayerWalkingState(this);
+
+            RunningState = new PlayerRunningState(this);
+
+            SprintingState = new PlayerSprintingState(this);
+
         }
     }
 }
