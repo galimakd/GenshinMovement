@@ -235,21 +235,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ca002da428252441b92f28d83c8a65f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Shape:
-    rid: 6592049837166559238
-  m_Size: {x: 2000, y: 100, z: 2000}
-  m_Rotation: {x: 0, y: 0, z: 0, w: 1}
-  m_PivotLocation: 1
-  m_PivotPosition: {x: 0, y: 0, z: 0}
-  m_UnmodifiedMeshVersion: 468
-  m_ShapeBox:
-    m_Center: {x: 0.34924316, y: -0.5065994, z: 0.88964844}
-    m_Extent: {x: 1000, y: 50, z: 1000}
-  references:
-    version: 2
-    RefIds:
-    - rid: 6592049837166559238
-      type: {class: Cube, ns: UnityEngine.ProBuilder.Shapes, asm: Unity.ProBuilder}
 --- !u!114 &321645952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1723,12 +1708,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 812755464}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.2, y: -50.49, z: -29.51}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 17.2, y: 49.51, z: -29.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 930829412}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &899299043
@@ -2038,12 +2023,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 899299043}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 23.06, y: -50.49, z: -29.51}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 23.06, y: 49.51, z: -29.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 930829412}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &930829411
@@ -2078,6 +2063,8 @@ Transform:
   - {fileID: 1546518406}
   - {fileID: 679308838}
   - {fileID: 573590874}
+  - {fileID: 812755469}
+  - {fileID: 899299048}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -102938,6 +102925,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1671507698}
+  - component: {fileID: 1671507699}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -102961,6 +102949,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1671507699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1671507697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cda78c3bf04744948b851cc0e5965496, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &1855086875
 Mesh:
   m_ObjectHideFlags: 0
