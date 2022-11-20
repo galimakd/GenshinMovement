@@ -5,7 +5,7 @@ namespace GenshinMovement
     [RequireComponent(typeof(PlayerInput))]//every time player component is added, it will also add player input component with it
     public class Player : MonoBehaviour
     {
-        public RigidBody RigidBody { get; private set; }//call rigid body
+        public Rigidbody Rigidbody { get; private set; }//call rigid body
 
         public PlayerInput Input { get; private set; }//call player input
 
@@ -14,7 +14,7 @@ namespace GenshinMovement
 
         private void Awake() 
         {
-            RigidBody = GetComponent<RigidBody>();
+            Rigidbody = GetComponent<Rigidbody>();
 
             Input = GetComponent<PlayerInput>();// get input before statemachine initialization
 
