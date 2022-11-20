@@ -7,6 +7,8 @@ namespace GenshinMovement
     {
         public Rigidbody Rigidbody { get; private set; }//call rigid body
 
+        public Transform MainCameraTransform { get; private set; }//for rotation of player with camera
+
         public PlayerInput Input { get; private set; }//call player input
 
         //call statemachine methods
@@ -17,6 +19,8 @@ namespace GenshinMovement
             Rigidbody = GetComponent<Rigidbody>();
 
             Input = GetComponent<PlayerInput>();// get input before statemachine initialization
+
+            MainCameraTransform = Camera.main.transform;
 
             movementStateMachine = new PlayerMovementStateMachine(this);
             //new instance of statemachine
