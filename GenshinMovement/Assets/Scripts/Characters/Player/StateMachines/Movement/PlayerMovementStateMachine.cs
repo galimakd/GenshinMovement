@@ -9,6 +9,7 @@ namespace GenshinMovement
     {
 
         public Player Player { get; }
+        public PlayerStateReusableData ReusableData { get; }
 
         public PlayerIdlingState IdlingState { get; }//get; so it's only settable from constructor and read only everywhere else, if private, it can be set anywhere in this class
 
@@ -21,6 +22,7 @@ namespace GenshinMovement
         public PlayerMovementStateMachine(Player player)//instantiate
         {
             Player = player;
+            ReusableData = new PlayerStateReusableData();
 
             IdlingState = new PlayerIdlingState(this);
 

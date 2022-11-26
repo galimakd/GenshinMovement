@@ -5,6 +5,8 @@ namespace GenshinMovement
     [RequireComponent(typeof(PlayerInput))]//every time player component is added, it will also add player input component with it
     public class Player : MonoBehaviour
     {
+        [field: Header("References")]
+        [field: SerializeField] public PlayerScriptableObjects Data { get; private set; }
         public Rigidbody Rigidbody { get; private set; }//call rigid body
 
         public Transform MainCameraTransform { get; private set; }//for rotation of player with camera

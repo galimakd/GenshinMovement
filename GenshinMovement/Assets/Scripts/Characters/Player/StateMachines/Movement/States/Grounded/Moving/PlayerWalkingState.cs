@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 namespace GenshinMovement
 {
-    public class PlayerWalkingState : PlayerMovementState
+    public class PlayerWalkingState : PlayerMovingState
     {
         public PlayerWalkingState(PlayerMovementStateMachine playerMovementStateMachine) : base(playerMovementStateMachine)
         {
@@ -16,27 +16,12 @@ namespace GenshinMovement
             {
                 base.Enter();
 
-                speedModifier = 0.225f;
+                stateMachine.ReusableData.MovementSpeedModifier = movementData.WalkData.SpeedModifier;
             }
 
         #endregion
         ///////////////////////////////////////////////////////////////////////////
-        #region Reusable Methods
-        protected override void AddInputActionCallbacks()
-        {
-            base.AddInputActionCallbacks();
-
-            stateMachine.Player.Input.PlayerActions.Movement.canceled += OnMovementCanceled;
-        }
-
-        protected override void RemoveInputActionCallBacks()
-        {
-            base.RemoveInputActionCallBacks();
-
-            stateMachine.Player.Input.PlayerActions.Movement.canceled -= OnMovementCanceled;
-        }
         
-        #endregion
         ////////////////////////////////////////////////////////////////////////////
         #region Input Methods
         protected override void OnWalkToggleStarted(InputAction.CallbackContext context)
@@ -44,11 +29,6 @@ namespace GenshinMovement
             base.OnWalkToggleStarted(context);
 
             stateMachine.ChangeState(stateMachine.RunningState);
-        }
-
-        protected void OnMovementCanceled(InputAction.CallbackContext context)
-        {
-            stateMachine.ChangeState(stateMachine.IdlingState);
         }
 
         #endregion

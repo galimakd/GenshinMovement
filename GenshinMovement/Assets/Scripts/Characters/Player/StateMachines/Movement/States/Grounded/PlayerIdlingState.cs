@@ -4,11 +4,10 @@ using UnityEngine;
 
 namespace GenshinMovement
 {
-    public class PlayerIdlingState : PlayerMovementState
+    public class PlayerIdlingState : PlayerGroundedState
     {
         public PlayerIdlingState(PlayerMovementStateMachine playerMovementStateMachine) : base(playerMovementStateMachine)
         {
-
         }
 
         #region InterfaceState Methods
@@ -16,7 +15,7 @@ namespace GenshinMovement
         {
             base.Enter();
 
-            speedModifier = 0f;//stop moving
+            stateMachine.ReusableData.MovementSpeedModifier = 0f;//stop moving
 
             ResetVelocity();
         }
@@ -25,7 +24,7 @@ namespace GenshinMovement
         {
             base.Update();
 
-            if(movementInput == Vector2.zero)
+            if(stateMachine.ReusableData.MovementInput == Vector2.zero)
             {
                 return;
             }
@@ -33,17 +32,7 @@ namespace GenshinMovement
             OnMove();
         }   
 
-        private void OnMove()
-        {
-            if(shouldWalk)
-            {
-                stateMachine.ChangeState(stateMachine.WalkingState);
-
-                return;
-            }
-
-            stateMachine.ChangeState(stateMachine.RunningState);
-        }
+        
 
         #endregion
     }
