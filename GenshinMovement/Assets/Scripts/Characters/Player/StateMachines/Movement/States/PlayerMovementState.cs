@@ -22,6 +22,11 @@ namespace GenshinMovement
 
         protected Vector3 dampedTargetRotationPassedTime;
 
+        protected bool shouldWalk;
+
+
+        //////////////////////////////////////////////////////////////////////////////////
+
         public PlayerMovementState(PlayerMovementStateMachine playerMovementStateMachine)
         {
             stateMachine = playerMovementStateMachine;
@@ -38,11 +43,13 @@ namespace GenshinMovement
         public virtual void Enter()
         {
             Debug.Log("State: " + GetType().Name);
+
+            AddInputActionCallbacks();
         }
 
         public virtual void Exit()
         {
-            
+            RemoveInputActionCallBacks();
         }
 
         public virtual void HandleInput()
@@ -195,6 +202,31 @@ namespace GenshinMovement
         protected Vector3 GetTargetRotationDirection(float targetAngle)
         {
             return Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+        }
+
+        protected void ResetVelocity()
+        {
+            stateMachine.Player.Rigidbody.velocity = Vector3.zero;//instant reset of velocity so no sliding
+        }
+
+        protected virtual void AddInputActionCallbacks()
+        {
+            stateMachine.Player.Input.PlayerActions.WalkToggle.started += OnWalkToggleStarted;
+        }
+
+        protected virtual void RemoveInputActionCallBacks()
+        {
+            stateMachine.Player.Input.PlayerActions.WalkToggle.started -= OnWalkToggleStarted;//remove call back
+        }
+
+
+        #endregion
+        /////////////////////////////////////////////////////////////////////////////
+        #region Input Methods
+
+        protected virtual void OnWalkToggleStarted(InputAction.CallbackContext context)
+        {
+            shouldWalk = !shouldWalk;
         }
 
         #endregion
