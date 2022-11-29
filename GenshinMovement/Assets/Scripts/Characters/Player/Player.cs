@@ -7,6 +7,10 @@ namespace GenshinMovement
     {
         [field: Header("References")]
         [field: SerializeField] public PlayerScriptableObjects Data { get; private set; }
+
+        [field: Header("Collissions")]
+        [field : SerializeField] public CapsuleColliderUtility ColliderUtility {get; private set;}
+
         public Rigidbody Rigidbody { get; private set; }//call rigid body
 
         public Transform MainCameraTransform { get; private set; }//for rotation of player with camera
@@ -22,10 +26,19 @@ namespace GenshinMovement
 
             Input = GetComponent<PlayerInput>();// get input before statemachine initialization
 
+            ColliderUtility.Initialize(gameObject);
+            ColliderUtility.CalculateCapsuleColliderDimensions();
+
             MainCameraTransform = Camera.main.transform;
 
             movementStateMachine = new PlayerMovementStateMachine(this);
             //new instance of statemachine
+        }
+
+        private void OnValidate()
+        {
+            ColliderUtility.Initialize(gameObject);
+            ColliderUtility.CalculateCapsuleColliderDimensions();
         }
 
         private void Start() 
